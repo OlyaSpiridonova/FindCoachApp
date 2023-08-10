@@ -1,25 +1,28 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+
+import CoachContact from "@/pages/request/CoachContact.vue";
+import CoachDetails from "@/pages/coach/CoachDetails.vue";
+import CoachList from "@/pages/coach/CoachList.vue";
+import CoachRegister from "@/pages/coach/CoachRegister.vue";
+import RequestReceived from "@/pages/request/RequestReceived.vue";
+import NotFound from "@/pages/NotFound.vue";
 
 const routes = [
+  { path: "/", redirect: "/coach" },
+  { path: "/coach", component: CoachList },
   {
-    path: "/",
-    name: "home",
-    component: HomeView,
+    path: "/coach/:id",
+    component: CoachDetails,
+    props: true,
+    children: [{ path: "contact", component: CoachContact }],
   },
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  },
+  { path: "/registration", component: CoachRegister },
+  { path: "/requests", component: RequestReceived },
+  { path: "/:notFound(.*)", component: NotFound },
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes,
 });
 
