@@ -12,6 +12,9 @@ import MainHeader from "@/components/layouts/MainHeader.vue";
 
 export default {
   components: { MainHeader },
+  created() {
+    this.$store.dispatch("tryLogin");
+  },
 };
 </script>
 
