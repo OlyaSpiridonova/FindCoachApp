@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <base-spinner v-if="isLoading"></base-spinner>
+  <div v-else>
     <section>
       <base-card>
         <h1>{{ fullName }}</h1>
@@ -8,7 +9,7 @@
     </section>
     <section>
       <base-card>
-        <header>
+        <header v-if="!isHide">
           <h2>Interested? Reach out now!</h2>
           <base-button link :to="contactLink">Contact</base-button>
         </header>
@@ -35,6 +36,7 @@ export default {
   props: ["id"],
   data() {
     return {
+      isLoading: false,
       selectedCoach: null,
     };
   },
@@ -54,11 +56,27 @@ export default {
     description() {
       return this.selectedCoach.description;
     },
+    isHide() {
+      return this.$route.fullPath.includes("contact");
+    },
+  },
+  methods: {
+    async loadCoaches() {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("coaches/loadCoaches");
+        this.selectedCoach = this.$store.getters["coaches/coaches"].find(
+          (coach) => coach.id === this.id
+        );
+        console.log(this.selectedCoach);
+      } catch (error) {
+        this.error = error.message || "Something went wrong!";
+      }
+      this.isLoading = false;
+    },
   },
   created() {
-    this.selectedCoach = this.$store.getters["coaches/coaches"].find(
-      (coach) => coach.id === this.id
-    );
+    this.loadCoaches();
   },
 };
 </script>

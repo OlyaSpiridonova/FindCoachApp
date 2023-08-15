@@ -13,7 +13,7 @@
           <base-button
             link
             to="/registration"
-            v-if="isLoggedIn && !isCoach && !isLoading"
+            v-if="isLoggedIn && isCoach && !isLoading"
             >Register as Coach</base-button
           >
           <base-button link to="/auth?redirect=registration" v-else
