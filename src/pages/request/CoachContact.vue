@@ -10,7 +10,7 @@
     </div>
     <p v-if="!formIsValid">Please enter a valid email and non-empty message</p>
     <div class="actions">
-      <base-button>Sead Message</base-button>
+      <base-button>Send Message</base-button>
     </div>
   </form>
 </template>
@@ -50,8 +50,6 @@ export default {
 <style scoped>
 form {
   margin: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 12px;
   padding: 1rem;
 }
 

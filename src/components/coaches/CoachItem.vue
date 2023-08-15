@@ -44,6 +44,10 @@ li {
   border-radius: 12px;
   padding: 1rem;
   list-style-type: none;
+
+  @media (max-width: 779px) {
+    padding: 0.5rem;
+  }
 }
 h3 {
   font-size: 1.5rem;

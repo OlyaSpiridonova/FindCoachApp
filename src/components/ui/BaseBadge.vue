@@ -21,6 +21,11 @@ export default {
   padding: 0.5rem 1.5rem;
   display: inline-block;
   margin-right: 0.5rem;
+
+  @media (max-width: 779px) {
+    padding: 0.5rem 0.5rem;
+    font-size: 12px;
+  }
 }
 
 .frontend {

@@ -1,5 +1,7 @@
 <template>
-  <base-spinner v-if="isLoading"></base-spinner>
+  <div v-if="isLoading" class="loading">
+    <base-spinner></base-spinner>
+  </div>
   <div v-else>
     <section>
       <base-card>
@@ -80,3 +82,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.loading {
+  margin-top: 30px;
+}
+</style>

@@ -40,12 +40,19 @@ header {
 
 header a {
   padding: 0.75rem 1.5rem;
+  @media (max-width: 779px) {
+    padding: 0.5rem;
+  }
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 779px) {
+    flex-direction: column;
+  }
 }
 
 ul {
@@ -53,6 +60,10 @@ ul {
   align-items: center;
   flex-direction: row;
   gap: 10px;
+  padding: 0;
+  @media (max-width: 779px) {
+    gap: 0 5px;
+  }
 }
 
 li {
