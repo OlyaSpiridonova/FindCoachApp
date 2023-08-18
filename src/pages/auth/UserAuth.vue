@@ -63,7 +63,6 @@ export default {
   methods: {
     async submitForm() {
       this.isValid = true;
-      this.isLoading = true;
       if (
         !this.email.includes("@") ||
         this.email === "" ||
@@ -72,6 +71,8 @@ export default {
         this.isValid = false;
         return;
       }
+
+      this.isLoading = true;
 
       const actionPayload = {
         email: this.email,
